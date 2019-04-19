@@ -28577,7 +28577,7 @@ module.exports = ".cardList {\r\n    display: flex;\r\n    flex-direction: row;\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container outer\" style=\"background-image: url('../../../assets/bg-01.jpg');\">\n    <div class=\"row\" style=\"margin-top: 50px; \"> \n      <!-- Search form -->\n      <div class=\"search-filter\">\n        <div class=\"col\" style=\"top : 30%\">\n              <label style=\" font-size:larger; margin-left: 10%; margin-right: 2%\">Filter : </label>\n              <select class=\"browser-default custom-select\" style=\"width: 20%\" [(ngModel)]=\"filterText\" >\n                  <option value=\"\">All</option>  \n                  <option value=\"International\">International</option>\n                  <option value=\"Domestic\">Domestic</option>\n                </select>\n                <a style=\"margin-left:20%\">\n                  <i class=\"fas fa-search fa-2x\" ></i>\n                  <input class=\"input--style-3 input-style2\"  type=\"text\" placeholder=\"   Search\" type=\"search\" [(ngModel)]=\"searchText\">\n                </a>\n        </div>\n      </div>\n        \n        <div class=\"col-md-3 col-xs-6 \" style=\"min-width: 45%;\" *ngFor=\"let stud of onBoardingService.students.value | searchStudents: searchText | filterStudents: filterText\">\n            <app-student [student]=\"stud\" (actionPerformed)=\"deleteRecord($event)\"></app-student>\n        </div>\n    </div>\n</div>"
+module.exports = "<div class=\"container outer\" style=\"background-image: url('assets/bg-01.jpg');\">\n    <div class=\"row\" style=\"margin-top: 50px; \"> \n      <!-- Search form -->\n      <div class=\"search-filter\">\n        <div class=\"col\" style=\"top : 30%\">\n              <label style=\" font-size:larger; margin-left: 10%; margin-right: 2%\">Filter : </label>\n              <select class=\"browser-default custom-select\" style=\"width: 20%\" [(ngModel)]=\"filterText\" >\n                  <option value=\"\">All</option>  \n                  <option value=\"International\">International</option>\n                  <option value=\"Domestic\">Domestic</option>\n                </select>\n                <a style=\"margin-left:20%\">\n                  <i class=\"fas fa-search fa-2x\" ></i>\n                  <input class=\"input--style-3 input-style2\"  type=\"text\" placeholder=\"   Search\" type=\"search\" [(ngModel)]=\"searchText\">\n                </a>\n        </div>\n      </div>\n        \n        <div class=\"col-md-3 col-xs-6 \" style=\"min-width: 45%;\" *ngFor=\"let stud of onBoardingService.students.value | searchStudents: searchText | filterStudents: filterText\">\n            <app-student [student]=\"stud\" (actionPerformed)=\"deleteRecord($event)\"></app-student>\n        </div>\n    </div>\n</div>"
 
 /***/ }),
 
@@ -29154,7 +29154,7 @@ var StudentOnboardingService = /** @class */ (function () {
      */
     StudentOnboardingService.prototype.getStudentsFromJSON = function () {
         var _this = this;
-        var url = '/assets/students.json'; // url of the json
+        var url = 'assets/students.json'; // url of the json
         this.http.get(url).subscribe(function (data) {
             _this.students.next(data);
         });
