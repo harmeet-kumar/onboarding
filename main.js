@@ -10,10 +10,12 @@
 var map = {
 	"./login/login.module": [
 		"./src/app/login/login.module.ts",
+		"default~login-login-module~onboarding-onboarding-module",
 		"login-login-module"
 	],
 	"./onboarding/onboarding.module": [
 		"./src/app/onboarding/onboarding.module.ts",
+		"default~login-login-module~onboarding-onboarding-module",
 		"onboarding-onboarding-module"
 	]
 };
@@ -26,7 +28,7 @@ function webpackAsyncContext(req) {
 			throw e;
 		});
 	}
-	return __webpack_require__.e(ids[1]).then(function() {
+	return Promise.all(ids.slice(1).map(__webpack_require__.e)).then(function() {
 		var id = ids[0];
 		return __webpack_require__(id);
 	});
@@ -120,7 +122,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n<app-header></app-header>\n<router-outlet></router-outlet>"
+module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n<app-header></app-header>\n<router-outlet></router-outlet>\n<app-footer></app-footer>"
 
 /***/ }),
 
@@ -180,7 +182,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _shared_page_not_found_page_not_found_page_not_found_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./shared/page-not-found/page-not-found/page-not-found.component */ "./src/app/shared/page-not-found/page-not-found/page-not-found.component.ts");
 /* harmony import */ var _shared_guards_login_guard_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./shared/guards/login-guard.service */ "./src/app/shared/guards/login-guard.service.ts");
 /* harmony import */ var _shared_guards_onboarding_guard_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./shared/guards/onboarding-guard.service */ "./src/app/shared/guards/onboarding-guard.service.ts");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
+/* harmony import */ var _shared_footer_footer_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./shared/footer/footer.component */ "./src/app/shared/footer/footer.component.ts");
 
 
 
@@ -202,9 +204,10 @@ var AppModule = /** @class */ (function () {
             declarations: [
                 _app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"],
                 _shared_header_header_component__WEBPACK_IMPORTED_MODULE_8__["HeaderComponent"],
-                _shared_page_not_found_page_not_found_page_not_found_component__WEBPACK_IMPORTED_MODULE_9__["PageNotFoundComponent"]
+                _shared_page_not_found_page_not_found_page_not_found_component__WEBPACK_IMPORTED_MODULE_9__["PageNotFoundComponent"],
+                _shared_footer_footer_component__WEBPACK_IMPORTED_MODULE_12__["FooterComponent"]
             ],
-            imports: [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_12__["NgbModule"].forRoot(),
+            imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
                 _app_routing_module__WEBPACK_IMPORTED_MODULE_3__["AppRoutingModule"],
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClientModule"],
@@ -242,6 +245,62 @@ var User = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/shared/footer/footer.component.css":
+/*!****************************************************!*\
+  !*** ./src/app/shared/footer/footer.component.css ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3NoYXJlZC9mb290ZXIvZm9vdGVyLmNvbXBvbmVudC5jc3MifQ== */"
+
+/***/ }),
+
+/***/ "./src/app/shared/footer/footer.component.html":
+/*!*****************************************************!*\
+  !*** ./src/app/shared/footer/footer.component.html ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<footer class=\"page-footer font-small blue\" style=\"background-color: black; position: absolute; width:100%;\">\n\n    <!-- Copyright -->\n    <div class=\"footer-copyright text-center py-3\" style=\"color:gray\">© 2018 Copyright:\n      <a routerLink=\"/\"> Kratos</a>\n    </div>\n    <!-- Copyright -->\n  \n</footer>"
+
+/***/ }),
+
+/***/ "./src/app/shared/footer/footer.component.ts":
+/*!***************************************************!*\
+  !*** ./src/app/shared/footer/footer.component.ts ***!
+  \***************************************************/
+/*! exports provided: FooterComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FooterComponent", function() { return FooterComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var FooterComponent = /** @class */ (function () {
+    function FooterComponent() {
+    }
+    FooterComponent.prototype.ngOnInit = function () {
+    };
+    FooterComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-footer',
+            template: __webpack_require__(/*! ./footer.component.html */ "./src/app/shared/footer/footer.component.html"),
+            styles: [__webpack_require__(/*! ./footer.component.css */ "./src/app/shared/footer/footer.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], FooterComponent);
+    return FooterComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/shared/guards/login-guard.service.ts":
 /*!******************************************************!*\
   !*** ./src/app/shared/guards/login-guard.service.ts ***!
@@ -267,7 +326,7 @@ var LoginGuardService = /** @class */ (function () {
     }
     LoginGuardService.prototype.canActivate = function (route, state) {
         var user = this.authicationService.getCurrentUser();
-        return true;
+        //return true;
         if (user) {
             return true;
         }
@@ -312,7 +371,7 @@ var OnboardingGuardService = /** @class */ (function () {
     }
     OnboardingGuardService.prototype.canActivate = function (route, state) {
         var user = this.authicationService.getCurrentUser();
-        return true;
+        //return true
         if (user) {
             return false;
         }
@@ -349,7 +408,7 @@ module.exports = ".bar-margin {\r\n    margin-bottom: -56px !important;\r\n    z
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n<nav class=\"navbar navbar-dark bg-dark mb-5 bar-margin header-bar\">\n    <a class=\"navbar-brand\" routerLink=\"/\">Student Onboarding</a> <div class=\"navbar-expand mr-auto\">\n        <div class=\"navbar-nav\">\n            <a class=\"nav-item nav-link\" *ngIf=\"loggedIn\"  routerLink=\"onboarding\" [routerLinkActive]=\"['active']\">OnBoarding Form</a>\n            <a class=\"nav-item nav-link\" *ngIf=\"loggedIn\"  routerLink=\"onboarding/list\" [routerLinkActive]=\"['active']\">Students List</a>\n        </div>\n        </div> \n        <div class=\"navbar-expand ml-auto navbar-nav\">\n            <div class=\"navbar-nav\">\n                <div class=\"navbar-nav\" *ngIf=\"loggedIn\"> \n                    <a class=\"nav-item nav-link\" target=\"_blank\">\n                        <i class=\"fas fa-user\"></i>\n                        <span class=\"user-name\">Hi Harmeet</span>\n                    </a>\n                </div>\n                <a (click)=\"logOut()\" *ngIf=\"loggedIn\" routerLink='login' class=\"btn btn-info marg-left \">\n                    <i class=\"fas fa-sign-out-alt\"></i>\n                    <span></span> Log out\n                </a>\n            </div>\n        </div>\n</nav>\n\n"
+module.exports = "\n<nav class=\"navbar navbar-dark bg-dark mb-5 bar-margin header-bar\">\n    <a class=\"navbar-brand\" routerLink=\"/\">Student Onboarding</a> <div class=\"navbar-expand mr-auto\">\n        <div class=\"navbar-nav\">\n            <a class=\"nav-item nav-link\" *ngIf=\"loggedIn\"  routerLink=\"onboarding/create\" [routerLinkActive]=\"['active']\">OnBoarding Form</a>\n            <a class=\"nav-item nav-link\" *ngIf=\"loggedIn\"  routerLink=\"onboarding/list\" [routerLinkActive]=\"['active']\">Students List</a>\n        </div>\n        </div> \n        <div class=\"navbar-expand ml-auto navbar-nav\">\n            <div class=\"navbar-nav\">\n                <div class=\"navbar-nav\" *ngIf=\"loggedIn\"> \n                    <a class=\"nav-item nav-link\" target=\"_blank\">\n                        <i class=\"fas fa-user\"></i>\n                        <span class=\"user-name\">Hi {{username}}</span>\n                    </a>\n                </div>\n                <a (click)=\"logOut()\" *ngIf=\"loggedIn\" routerLink='login' class=\"btn btn-info marg-left \">\n                    <i class=\"fas fa-sign-out-alt\"></i>\n                    <span></span> Log out\n                </a>\n            </div>\n        </div>\n</nav>\n\n"
 
 /***/ }),
 
@@ -373,19 +432,21 @@ __webpack_require__.r(__webpack_exports__);
 
 var HeaderComponent = /** @class */ (function () {
     function HeaderComponent(router, authenticationService) {
+        var _this = this;
         this.router = router;
         this.authenticationService = authenticationService;
         this.title = 'kratos';
         this.loggedIn = true;
+        this.userSubscription = this.authenticationService.username.subscribe(function (val) {
+            _this.username = val;
+            if (val) {
+                _this.loggedIn = true;
+            }
+            else {
+                _this.loggedIn = false;
+            }
+        });
     }
-    // userSubscription = this.authenticationService.username.subscribe(val => {
-    //   this.username = val
-    //   if(val) {
-    //     this.loggedIn = true;
-    //   } else {
-    //     this.loggedIn = false;
-    //   }
-    // });
     HeaderComponent.prototype.ngOnInit = function () {
     };
     HeaderComponent.prototype.logOut = function () {

@@ -76,7 +76,7 @@ var LoginDetailsComponent = /** @class */ (function () {
             return;
         }
         var user = this.authenticationService.login(this.formControls.username.value, this.formControls.password.value);
-        this.router.navigate(['onboarding']);
+        this.router.navigate(['onboarding/create']);
     };
     LoginDetailsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
