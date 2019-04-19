@@ -19,7 +19,7 @@ export class StudentOnboardingService {
    * function to get all the students saved in the pre-defined json
    */
   private getStudentsFromJSON() {
-    const url = '/assets/students.json';// url of the json
+    const url = 'assets/students.json';// url of the json
     this.http.get<Student[]>(url).subscribe(data => {
       this.students.next(data);
     });
