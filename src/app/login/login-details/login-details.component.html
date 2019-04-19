@@ -1,0 +1,50 @@
+    <div class="limiter container">
+        <div class="container-login100">
+          <div class="wrap-login100">
+            <div class="login100-pic js-tilt" data-tilt>
+              <img src="../../../assets/img-01.png" alt="IMG">
+            </div>
+    
+            <form class="login100-form validate-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+              <span class="login100-form-title">
+               School Admin Login
+              </span>
+    
+              <div class="wrap-input100 validate-input" data-validate = "Valid Username is required">
+                <input class="input100 form-control" type="text" formControlName="username" name="username" placeholder="Username" [ngClass]="{ 'is-invalid': submitted && formControls.username.errors }">
+                <span class="focus-input100"></span>
+                <span class="symbol-input100">
+                  <i class="fa fa-envelope" aria-hidden="true"></i>
+                </span>
+                <div *ngIf="submitted && formControls.username.errors" class="invalid-feedback">
+                    <div *ngIf="formControls.username.errors.required">Username is required</div>
+                </div>
+              </div>
+    
+              <div class="wrap-input100 validate-input" data-validate = "Password is required">
+                <input class="input100 form-control" type="password" formControlName="password" name="password" placeholder="Password" [ngClass]="{ 'is-invalid': submitted && formControls.password.errors }">
+                <span class="focus-input100"></span>
+                <span class="symbol-input100">
+                  <i class="fa fa-lock" aria-hidden="true"></i>
+                </span>
+                <div *ngIf="submitted && formControls.password.errors" class="invalid-feedback">
+                    <div *ngIf="formControls.password.errors.required">Password is required</div>
+                </div>
+              </div>
+              
+              <div class="container-login100-form-btn">
+                <button class="login100-form-btn login_btn">
+                  Login
+                </button>
+              </div>
+    
+              <div class="text-center p-t-136">
+                <button class="txt2" (click)="reset()">
+                  Reset
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      

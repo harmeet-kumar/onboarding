@@ -1,0 +1,24 @@
+
+<nav class="navbar navbar-dark bg-dark mb-5 bar-margin header-bar">
+    <a class="navbar-brand" routerLink="/">Student Onboarding</a> <div class="navbar-expand mr-auto">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link" *ngIf="loggedIn"  routerLink="onboarding" [routerLinkActive]="['active']">OnBoarding Form</a>
+            <a class="nav-item nav-link" *ngIf="loggedIn"  routerLink="onboarding/list" [routerLinkActive]="['active']">Students List</a>
+        </div>
+        </div> 
+        <div class="navbar-expand ml-auto navbar-nav">
+            <div class="navbar-nav">
+                <div class="navbar-nav" *ngIf="loggedIn"> 
+                    <a class="nav-item nav-link" target="_blank">
+                        <i class="fas fa-user"></i>
+                        <span class="user-name">Hi Harmeet</span>
+                    </a>
+                </div>
+                <a (click)="logOut()" *ngIf="loggedIn" routerLink='login' class="btn btn-info marg-left ">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span></span> Log out
+                </a>
+            </div>
+        </div>
+</nav>
+
