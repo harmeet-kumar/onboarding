@@ -1,16 +1,20 @@
-<div class="card parent " >
-    <div class="card-body " [ngStyle]="{'background-color':student.category == 'International' ? 'aquamarine' : 'lemonchiffon'}">
-        <h4 class="card-title" style="margin-bottom:25px;">{{ student.firstName + " " + student.lastName }}</h4>
+<div class="card parent " [ngClass]="{'international':student.category == 'International','domestic' : student.category == 'Domestic'}">
+    <div class="card-body " >
+      <div>
+          <h4 class="card-title" style="margin-bottom:25px;text-align: center;">{{ student.firstName + " " + student.lastName }}</h4>
+      </div>  
+      
+
         <!-- <h6 class="card-subtitle">Father's Name :{{ student.fatherName }}</h6> -->
         <div class="complete-body" >
           <div class="left">
               <h6 class="card-title">General Information : </h6> 
-              <p class="card-text">Father's Name :{{ student.fatherName }}</p>
+              <p class="card-text">Father's Name : {{ student.fatherName }}</p>
               <p class="card-text">Mother's Name : {{student.motherName }}</p> 
               <p class="card-text" *ngIf = "student.category == 'International'">Catergory: International</p>
               <p class="card-text" *ngIf = "student.category == 'Domestic'">Catergory: Domestic</p>
-              <p class="card-text">Previous Class Score : {{student.previousScore }}</p> 
-              <p class="card-text">Date Of Birth : {{student.dateOfBirth }}</p> 
+              <p class="card-text">Previous Score : {{student.previousScore }}</p> 
+              <p class="card-text">Birthday : {{student.dateOfBirth | date }}</p> 
           </div>
           <div class="right">
               <h6 class="card-title">Submitted Documents : </h6> 
@@ -26,18 +30,18 @@
           <button class="btn btn-primary action-buttons" (click) = "editClick(student.id)">Edit</button> 
           <button class="btn btn-primary action-buttons" (click) = "viewClicked(student.id)">View</button>
           <button class="btn btn-primary action-buttons" (click) = "modal.show()" >Delete</button>
-          <app-modal #modal >
-            <div class="app-modal-header" style="text-align:center; width: 100%">
-              <h4>Delete Confirmation </h4>
-            </div>
-            <div class="app-modal-body" style="text-align: centre">
-              <p>Are you sure you want to delete the record for: <b class="font-design">{{student.firstName + " " + student.lastName}}</b> </p>
-            </div>
-            <div class="app-modal-footer" style="width: 100%">
-              <button type="button" class="btn btn-default left-margin" (click)="modal.hide()">Close</button>
-              <button type="button" class="btn btn-primary left-margin" (click)="deleteClicked(student.id, modal);modal.hide()">Delete</button>
-            </div>
-          </app-modal>
         </div>
     </div>
 </div>
+<app-modal #modal style="position:absolute">
+    <div class="app-modal-header" style="text-align:center; width: 100%">
+      <h4>Delete Confirmation </h4>
+    </div>
+    <div class="app-modal-body" style="text-align: centre">
+      <p>Are you sure you want to delete the record for: <b class="font-design">{{student.firstName + " " + student.lastName}}</b> </p>
+    </div>
+    <div class="app-modal-footer" style="width: 100%">
+      <button type="button" class="btn btn-default left-margin" (click)="modal.hide()">Close</button>
+      <button type="button" class="btn btn-primary left-margin" (click)="deleteClicked(student.id, modal);modal.hide()">Delete</button>
+    </div>
+</app-modal>

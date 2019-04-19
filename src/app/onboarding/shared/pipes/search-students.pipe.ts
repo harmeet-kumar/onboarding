@@ -5,18 +5,22 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class SearchStudentsPipe implements PipeTransform {
 
-  transform(items: any[], searchText: string): any[] {
+  transform(students: any[], searchText: string): any[] {
 
-    if (!items) {
+    if (!students) {
       return [];
     }
     if (!searchText) {
-      return items;
+      return students;
     }
+    
     searchText = searchText.toLocaleLowerCase();
-
-    return items.filter(it => {
-      return it.firstName.toLocaleLowerCase().includes(searchText) || it.lastName.toLocaleLowerCase().includes(searchText);
+    
+    /**
+     * compares the entered text with students first name or last name
+     */
+    return students.filter(student => {
+      return student.firstName.toLocaleLowerCase().includes(searchText) || student.lastName.toLocaleLowerCase().includes(searchText);
     });
   }
 

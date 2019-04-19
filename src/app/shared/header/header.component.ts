@@ -16,14 +16,14 @@ export class HeaderComponent implements OnInit {
     public username: string;
     public loggedIn: boolean = true;
     
-    // userSubscription = this.authenticationService.username.subscribe(val => {
-    //   this.username = val
-    //   if(val) {
-    //     this.loggedIn = true;
-    //   } else {
-    //     this.loggedIn = false;
-    //   }
-    // });
+    userSubscription = this.authenticationService.username.subscribe(val => {
+      this.username = val
+      if(val) {
+        this.loggedIn = true;
+      } else {
+        this.loggedIn = false;
+      }
+    });
     
     ngOnInit() {
     }   

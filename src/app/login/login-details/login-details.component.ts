@@ -47,7 +47,7 @@ export class LoginDetailsComponent implements OnInit {
  
     const user = this.authenticationService.login(this.formControls.username.value, this.formControls.password.value);
     
-    this.router.navigate(['onboarding']);        
+    this.router.navigate(['onboarding/create']);        
                 
   }
 }

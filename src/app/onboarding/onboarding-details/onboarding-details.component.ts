@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators, AbstractControl, NgForm } from '@an
 import { DocumentValidator } from '../validators/documents.validator';
 import { Router, ActivatedRoute } from "@angular/router";
 import { StudentOnboardingService } from "../shared/services/student-onboarding.service"
+import { Constants } from 'src/app/shared/Constants/constants';
 
 @Component({
   selector: 'app-onboarding-details',
@@ -16,11 +17,14 @@ export class OnboardingDetailsComponent implements OnInit {
   studentForm: FormGroup;
   isInternationStudent: boolean = null;
   isDomesticStudent:boolean = null;
-  categories = ["International","Domestic"];
+  categories = [Constants.INTERNATIONAL,Constants.DOMESTIC];
   editForm: boolean = false;
   viewForm: boolean = false;
   idForUpdate: number;
 
+  /**
+   * Created this variable for the guard
+   */
   @ViewChild('studentForm') public createEmployeeForm: NgForm;
 
   constructor(private formBuilder: FormBuilder, private router: Router, public onBoardingService : StudentOnboardingService,
@@ -28,9 +32,14 @@ export class OnboardingDetailsComponent implements OnInit {
   }
 
   
-  
+  /**
+   * Getter for the form controls in HTML
+   */
   get formControls() { return this.studentForm.controls; }
 
+  /**
+   * Create the form
+   */
   ngOnInit() {
     this.studentForm = this.formBuilder.group({
       firstName: [this.student.firstName, Validators.required],
@@ -39,30 +48,37 @@ export class OnboardingDetailsComponent implements OnInit {
       motherName: [this.student.motherName, Validators.required],
       previousScore:[this.student.previousScore, [Validators.required,Validators.min(0),Validators.max(100)]],
       category: [this.student.category, Validators.required],
-      dateOfBirth: [this.student.dateOfBirth, Validators.required],
-      declaration: [this.student.declaration, Validators.required],
-      domicile: [this.student.domicile, Validators.required],
-      markSheets: [this.student.markSheets, Validators.required],
-      passport: [this.student.passport, Validators.required],
-      policeClearance: [this.student.policeClearance, Validators.required],
-      birthCertificate: [this.student.birthCertificate, Validators.required]
+      dateOfBirth: [this.student.dateOfBirth,Validators.required],
+      declaration: [this.student.declaration,Validators.required],
+      domicile: [this.student.domicile,Validators.required],
+      markSheets: [this.student.markSheets,Validators.required],
+      passport: [this.student.passport],
+      policeClearance: [this.student.policeClearance],
+      birthCertificate: [this.student.birthCertificate,Validators.required]
     }, { validator: DocumentValidator});
 
     this.route.paramMap.subscribe(params => {
-      const id = +params.get('id');
+      const id = +params.get(Constants.ID);
       if (id) {
         const student = this.onBoardingService.getStudentFromId(id);
         this.fillEmployeeDetails(student);
-        if(this.router.url.includes('edit')) {
+        if(this.router.url.includes(Constants.EDIT)) {
           this.editForm = true;
         } else {
           this.viewForm = true;
           this.disableFields();
         }
+      } else {
+        this.viewForm = false;
+        this.editForm = false;
       }
     });
   }
   
+  /**
+   * @param  {Student} student
+   * Fills the student details that is selected to view or delete
+   */
   fillEmployeeDetails(student: Student) {
     this.studentForm.patchValue({
       firstName: student.firstName,
@@ -79,9 +95,13 @@ export class OnboardingDetailsComponent implements OnInit {
       policeClearance: student.policeClearance,
       birthCertificate: student.birthCertificate
     });
+    this.studentForm.controls.category.setValue(student.category);
     this.idForUpdate = student.id;
   }
-
+  
+  /**
+   * Disable the fields in case of view record.
+   */
   disableFields() {
       this.studentForm.get('firstName').disable();
       this.studentForm.get('lastName').disable();
@@ -100,30 +120,35 @@ export class OnboardingDetailsComponent implements OnInit {
   } 
       
   
+  /**
+   * Perform the submit operation
+   */
   onSubmit() {
-    console.log(this.studentForm.value);
     if(!this.editForm && !this.viewForm) {
       this.onBoardingService.addStudent(this.studentForm.value);
     } else if (this.editForm) {
       this.onBoardingService.updateStudent(this.studentForm.value,this.idForUpdate);
       this.editForm = false;
+      this.viewForm = false;
       this.idForUpdate = null;
     } else {
       this.viewForm = false;
     }
-    this.router.navigate(["/onboarding", "list"]);
+    this.router.navigate([Constants.ONBOARDINGPAGE, Constants.LIST]);
   }
 
+  /**
+   * Update the category flag
+   */
   public updateCategoryFlag(value) {
-      if(value != "null") {
-        if(value == "1: International") {
+      if(value != Constants.NULL) {
+        if(value == Constants.INTERNATIONAL1) {
           this.isInternationStudent = true;
           this.isDomesticStudent = false;
-        }  else if (value == "2: Domestic") {
+        }  else if (value == Constants.DOMESTIC2) {
           this.isInternationStudent = false;
           this.isDomesticStudent = true;
         }
-        console.log(this.formControls.category)
       } 
   }  
 }

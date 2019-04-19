@@ -5,16 +5,19 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class FilterStudentsPipe implements PipeTransform {
 
-  transform(items: any[], searchText: string): any[] {
-    if (!items) {
+  transform(students: any[], searchText: string): any[] {
+    if (!students) {
       return [];
     }
     if (!searchText) {
-      return items;
+      return students;
     }
 
-    return items.filter(it => {
-      return it.category == searchText;
+    /**
+     * Filter data on the basis on category i.e. Domestic or International
+     */
+    return students.filter(student => {
+      return student.category == searchText;
     });
   }
 

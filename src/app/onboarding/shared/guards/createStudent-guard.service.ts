@@ -4,18 +4,20 @@ import { OnboardingDetailsComponent } from '../../onboarding-details/onboarding-
 import { BsModalService } from 'ngx-bootstrap';
 import { Subject } from 'rxjs';
 import { LeaveModalComponent } from '../modal/leave-form-modal/leave-modal/leave-modal.component';
+import { Constants } from 'src/app/shared/Constants/constants';
 
 @Injectable()
 export class CreateGuardService  implements CanDeactivate<OnboardingDetailsComponent> {
-  constructor(private modalService: BsModalService) {}
-
+  constructor() {}
+  /**
+   * @param  {OnboardingDetailsComponent} component
+   * @returns boolean
+   * Confirms with user if he wants to loose the data incase he left the form half filled.
+   */
   canDeactivate(component: OnboardingDetailsComponent): boolean {
-    // if (component.studentForm.dirty) {
-    //   const subject = new Subject<boolean>();
-
-    //   const modal = this.modalService.show(LeaveModalComponent, {'class': 'modal-dialog-primary'});
-    //   modal.content.subject = subject;
-    // }
+    if (component.studentForm.dirty && component.studentForm.invalid) {
+      return confirm(Constants.GUARDMESSAGE);
+    }
     return true;
   }
 

@@ -5,8 +5,13 @@ import { OnboardingListComponent } from './onboarding-list/onboarding-list.compo
 import { StudentGuardService } from './shared/guards/students-guard.service';
 import { CreateGuardService } from './shared/guards/createStudent-guard.service';
 
-const routes: Routes = [{
-  path: '',
+const routes: Routes = [
+  {
+    path: '',
+    redirectTo: 'create',
+    pathMatch: 'full'
+},{
+  path: 'create',
   component: OnboardingDetailsComponent,
   canDeactivate: [CreateGuardService]
 },{

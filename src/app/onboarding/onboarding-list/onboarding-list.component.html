@@ -1,7 +1,6 @@
-<div class="container outer" style="background-image: url('assets/bg-01.jpg');">
+<div class="container outer" style="background-image: url('assets/bg-01.jpg');    background-size: 100% 100%;">
     <div class="row" style="margin-top: 50px; "> 
-      <!-- Search form -->
-      <div class="search-filter">
+     <div class="search-filter">
         <div class="col" style="top : 30%">
               <label style=" font-size:larger; margin-left: 10%; margin-right: 2%">Filter : </label>
               <select class="browser-default custom-select" style="width: 20%" [(ngModel)]="filterText" >
@@ -15,9 +14,8 @@
                 </a>
         </div>
       </div>
-        
-        <div class="col-md-3 col-xs-6 " style="min-width: 45%;" *ngFor="let stud of onBoardingService.students.value | searchStudents: searchText | filterStudents: filterText">
-            <app-student [student]="stud" (actionPerformed)="deleteRecord($event)"></app-student>
+        <div class="col-md-3" style="min-width: 45%;" *ngFor="let student of onBoardingService.students.value | searchStudents: searchText | filterStudents: filterText">
+            <app-student [student]="student" (actionPerformed)="deleteRecord($event)"></app-student>
         </div>
     </div>
 </div>

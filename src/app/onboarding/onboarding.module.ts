@@ -11,19 +11,15 @@ import { SearchStudentsPipe } from './shared/pipes/search-students.pipe';
 import { FilterStudentsPipe } from './shared/pipes/filter-students.pipe';
 import { StudentGuardService } from './shared/guards/students-guard.service';
 import { CreateGuardService } from './shared/guards/createStudent-guard.service';
-import { LeaveModalComponent } from './shared/modal/leave-form-modal/leave-modal/leave-modal.component';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
-  declarations: [LeaveModalComponent,OnboardingDetailsComponent, OnboardingListComponent, StudentComponent,ModalComponent, SearchStudentsPipe, FilterStudentsPipe],
-  imports: [NgbModule.forRoot(),
+  declarations: [OnboardingDetailsComponent, OnboardingListComponent, StudentComponent,ModalComponent, SearchStudentsPipe, FilterStudentsPipe],
+  imports: [
     CommonModule,
     OnboardingRoutingModule,
     ReactiveFormsModule,
     FlexLayoutModule,
     FormsModule
-  ], entryComponents: [
-    LeaveModalComponent,
   ],
   providers: [StudentGuardService,CreateGuardService]
 })

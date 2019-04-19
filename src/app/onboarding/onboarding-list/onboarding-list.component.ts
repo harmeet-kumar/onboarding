@@ -13,9 +13,12 @@ export class OnboardingListComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  
+  /**
+   * @param  {number} id
+   */
+  //Deletes student record 
   deleteRecord(id: number) {
-    debugger
     this.onBoardingService.deleteStudent(+id);
   }
 }

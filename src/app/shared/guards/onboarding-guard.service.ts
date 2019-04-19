@@ -17,7 +17,7 @@ export class OnboardingGuardService implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
 
     const user = this.authicationService.getCurrentUser();
-    return true
+    //return true
     if(user) {
       return false;
     }

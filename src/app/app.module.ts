@@ -10,15 +10,16 @@ import { HeaderComponent } from './shared/header/header.component';
 import { PageNotFoundComponent } from './shared/page-not-found/page-not-found/page-not-found.component';
 import { LoginGuardService } from './shared/guards/login-guard.service';
 import { OnboardingGuardService } from './shared/guards/onboarding-guard.service';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { FooterComponent } from './shared/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    FooterComponent
   ],
-  imports: [NgbModule.forRoot(),
+  imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
