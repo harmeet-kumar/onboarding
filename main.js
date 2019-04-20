@@ -256,7 +256,7 @@ var User = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3NoYXJlZC9mb290ZXIvZm9vdGVyLmNvbXBvbmVudC5jc3MifQ== */"
+module.exports = ".main {\r\n    background-color: black; position: absolute; width:100%;\r\n}\r\n\r\n.col-gray{\r\n    color:gray\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc2hhcmVkL2Zvb3Rlci9mb290ZXIuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLHVCQUF1QixFQUFFLGtCQUFrQixFQUFFLFVBQVU7QUFDM0Q7O0FBRUE7SUFDSTtBQUNKIiwiZmlsZSI6InNyYy9hcHAvc2hhcmVkL2Zvb3Rlci9mb290ZXIuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5tYWluIHtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IGJsYWNrOyBwb3NpdGlvbjogYWJzb2x1dGU7IHdpZHRoOjEwMCU7XHJcbn1cclxuXHJcbi5jb2wtZ3JheXtcclxuICAgIGNvbG9yOmdyYXlcclxufSJdfQ== */"
 
 /***/ }),
 
@@ -267,7 +267,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<footer class=\"page-footer font-small blue\" style=\"background-color: black; position: absolute; width:100%;\">\n\n    <!-- Copyright -->\n    <div class=\"footer-copyright text-center py-3\" style=\"color:gray\">© 2019 NAGP Project:\n      <a> Kratos</a>\n    </div>\n    <!-- Copyright -->\n  \n</footer>"
+module.exports = "<footer class=\"page-footer font-small blue main\">\n\n    <!-- Copyright -->\n    <div class=\"footer-copyright text-center py-3 col-gray\">© 2019 NAGP Project:\n      <a> Kratos</a>\n    </div>\n    <!-- Copyright -->\n  \n</footer>"
 
 /***/ }),
 
