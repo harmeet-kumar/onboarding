@@ -150,7 +150,8 @@
             </div>
             
             <div class="form-row-last">
-              <button type="submit"  [disabled]="!studentForm.valid" *ngIf="!viewForm" class="onboard text-class">Onboard</button>
+              <button type="submit"  [disabled]="!studentForm.valid" *ngIf="!viewForm && !editForm" class="onboard text-class">Onboard</button>
+              <button type="submit"  [disabled]="!studentForm.valid" *ngIf="editForm" class="onboard text-class">Update</button>
             </div>
             <div class="form-group no-boundary bottom-warning" > 
               <div class="form-row form-row-2 ">

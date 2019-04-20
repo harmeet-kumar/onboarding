@@ -17,7 +17,6 @@ export class LoginGuardService implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     
     const user = this.authicationService.getCurrentUser();
-    //return true;
     if(user) {
       return true;
     }
