@@ -110,3 +110,21 @@ html {
   margin-left: 5px;
 }
 
+.outer-background {
+  background-image: url("/assets/bg-01.jpg");
+  background-size: 100% 100%;
+  overflow: hidden;
+  height: auto;
+  width: auto;
+}
+
+.inner-first {
+  margin-top: 50px; 
+  margin-bottom: 50px;
+}
+
+.filter-label {
+  font-size:larger; 
+  margin-left: 10%;
+  margin-right: 2%;
+}
