@@ -330,7 +330,6 @@ var LoginGuardService = /** @class */ (function () {
     }
     LoginGuardService.prototype.canActivate = function (route, state) {
         var user = this.authicationService.getCurrentUser();
-        //return true;
         if (user) {
             return true;
         }
@@ -375,7 +374,6 @@ var OnboardingGuardService = /** @class */ (function () {
     }
     OnboardingGuardService.prototype.canActivate = function (route, state) {
         var user = this.authicationService.getCurrentUser();
-        //return true
         if (user) {
             return false;
         }
