@@ -1,11 +1,8 @@
 <div class="card parent " [ngClass]="{'international':student.category == 'International','domestic' : student.category == 'Domestic'}">
     <div class="card-body " >
       <div>
-          <h4 class="card-title" style="margin-bottom:25px;text-align: center;">{{ student.firstName + " " + student.lastName }}</h4>
+          <h4 class="card-title card-name-style">{{ student.firstName + " " + student.lastName }}</h4>
       </div>  
-      
-
-        <!-- <h6 class="card-subtitle">Father's Name :{{ student.fatherName }}</h6> -->
         <div class="complete-body" >
           <div class="left">
               <h6 class="card-title">General Information</h6> 
@@ -33,14 +30,14 @@
         </div>
     </div>
 </div>
-<app-modal #modal style="position:absolute">
-    <div class="app-modal-header" style="text-align:center; width: 100%">
+<app-modal #modal class="pos-absolute">
+    <div class="app-modal-header align-centre-text full-width" >
       <h4>Delete Confirmation </h4>
     </div>
-    <div class="app-modal-body" style="text-align: centre">
+    <div class="app-modal-body" >
       <p>Are you sure you want to delete the record for: <b class="font-design">{{student.firstName + " " + student.lastName}}</b> </p>
     </div>
-    <div class="app-modal-footer" style="width: 100%">
+    <div class="app-modal-footer full-width" >
       <button type="button" class="btn btn-default left-margin" (click)="modal.hide()">Close</button>
       <button type="button" class="btn btn-primary left-margin" (click)="deleteClicked(student.id, modal);modal.hide()">Delete</button>
     </div>

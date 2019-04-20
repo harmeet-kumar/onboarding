@@ -119,12 +119,32 @@ html {
 }
 
 .inner-first {
-  margin-top: 50px; 
-  margin-bottom: 50px;
+  margin-top: 50px !important; 
+  margin-bottom: 50px !important;
 }
 
 .filter-label {
   font-size:larger; 
-  margin-left: 10%;
+  margin-left: 8%;
   margin-right: 2%;
+}
+
+.min-width-45 {
+  min-width: 45%;
+}
+
+.left-30 {
+  left:35% !important;
+  top: 40% !important;
+}
+
+.top-30{
+  top : 30% !important;
+}
+
+.marg-left-20 {
+  margin-left:20%
+}
+.wid-20{
+  width:20%;
 }

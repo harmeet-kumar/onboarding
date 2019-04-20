@@ -161,3 +161,19 @@
   button:hover, a:hover {
     opacity: 0.7;
   }
+
+  .card-name-style {
+    margin-bottom:25px;text-align: center;
+  }
+
+  .align-centre-text {
+    text-align:center;
+  }
+
+  .full-width {
+    width: 100%
+  }
+
+  .pos-absolute{
+    position:absolute;
+  }

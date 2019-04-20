@@ -430,3 +430,19 @@ input[type="checkbox"] {
     top: 10px;
     right: 50px;
 }
+
+.marg-right-5 {
+	margin-right: 5%;
+}
+
+.mar-top-10 {
+	margin-top:10px;
+}
+
+.left-50{
+	left:50%;
+}
+
+.mar-top-20 {
+	margin-top: 20px;
+}

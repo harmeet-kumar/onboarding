@@ -76,7 +76,7 @@
 
             <div class="form-row no-boundary">
                 <input type="number" name="previousScore" formControlName="previousScore" class="text-class" id="lastClassScore" placeholder="Last class percentage score" required>
-                <span class="select-btn" style=" margin-right: 5%;">
+                <span class="select-btn marg-right-5" >
                     <i class="zmdi zmdi-chevron-down">%</i>
                     <i class="zmdi zmdi-chevron-down color-red" >*</i>
                 </span>
@@ -89,8 +89,8 @@
                 </div>
             </div>
 
-            <div class="form-group no-boundary" style="margin-top:10px;">
-                <div class="form-row form-row-1" style="margin-top: 20px;">
+            <div class="form-group no-boundary mar-top-10" >
+                <div class="form-row form-row-1 mar-top-20">
                   <label class="form-row">Date of Birth</label>
                 </div>
                 <div class="form-row form-row-2">
@@ -101,7 +101,7 @@
                 </div>
               </div>
               <div class="form-row no-boundary">
-                  <div *ngIf="formControls.dateOfBirth.invalid && formControls.dateOfBirth.touched" class="error-style" style="left:50%">
+                  <div *ngIf="formControls.dateOfBirth.invalid && formControls.dateOfBirth.touched" class="error-style left-50">
                       <small class="text-danger" *ngIf="formControls.dateOfBirth.errors?.required">Date Of Birth is required</small>
                   </div>
               </div>
@@ -165,16 +165,3 @@
       </div>
     </div>
   </div>
-  
-<app-modal #modal id="useModal" style="position:absolute">
-    <div class="app-modal-header" style="text-align:center; width: 100%">
-        <h4>Delete Confirmation </h4>
-    </div>
-    <div class="app-modal-body" style="text-align: centre">
-        <p>Are you sure you want to delete the record for: <b class="font-design">{{student.firstName + " " + student.lastName}}</b> </p>
-    </div>
-    <div class="app-modal-footer" style="width: 100%">
-        <button type="button" class="btn btn-default left-margin" (click)="modal.hide()">Close</button>
-        <button type="button" class="btn btn-primary left-margin" (click)="deleteClicked(student.id, modal);modal.hide()">Delete</button>
-    </div>
-</app-modal>
