@@ -21,7 +21,7 @@ export class LoginGuardService implements CanActivate {
     if(user) {
       return true;
     }
-    this._router.navigate(['/login']);
+    this._router.navigate(['/notfound']);
     return false;
   }
   

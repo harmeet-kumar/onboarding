@@ -63,6 +63,13 @@ export class OnboardingDetailsComponent implements OnInit {
         const student = this.onBoardingService.getStudentFromId(id);
         this.fillEmployeeDetails(student);
         if(this.router.url.includes(Constants.EDIT)) {
+          if(student.category == Constants.INTERNATIONAL) {
+            this.isInternationStudent = true;
+            this.isDomesticStudent = false;
+          } else {
+            this.isInternationStudent = false;
+            this.isDomesticStudent = true;
+          }
           this.editForm = true;
         } else {
           this.viewForm = true;
@@ -134,6 +141,8 @@ export class OnboardingDetailsComponent implements OnInit {
     } else {
       this.viewForm = false;
     }
+    this.isDomesticStudent = false;
+    this.isInternationStudent = false;
     this.router.navigate([Constants.ONBOARDINGPAGE, Constants.LIST]);
   }
 

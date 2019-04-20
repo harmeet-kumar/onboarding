@@ -11,6 +11,7 @@ import { PageNotFoundComponent } from './shared/page-not-found/page-not-found/pa
 import { LoginGuardService } from './shared/guards/login-guard.service';
 import { OnboardingGuardService } from './shared/guards/onboarding-guard.service';
 import { FooterComponent } from './shared/footer/footer.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -24,9 +25,11 @@ import { FooterComponent } from './shared/footer/footer.component';
     AppRoutingModule,
     HttpClientModule,
     FlexLayoutModule,
-    CommonModule
+    CommonModule,
+    RouterModule
   ],
   providers: [LoginGuardService,OnboardingGuardService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: []
 })
 export class AppModule { }

@@ -8,22 +8,22 @@
         <!-- <h6 class="card-subtitle">Father's Name :{{ student.fatherName }}</h6> -->
         <div class="complete-body" >
           <div class="left">
-              <h6 class="card-title">General Information : </h6> 
-              <p class="card-text">Father's Name : {{ student.fatherName }}</p>
-              <p class="card-text">Mother's Name : {{student.motherName }}</p> 
-              <p class="card-text" *ngIf = "student.category == 'International'">Catergory: International</p>
-              <p class="card-text" *ngIf = "student.category == 'Domestic'">Catergory: Domestic</p>
-              <p class="card-text">Previous Score : {{student.previousScore }}</p> 
-              <p class="card-text">Birthday : {{student.dateOfBirth | date }}</p> 
+              <h6 class="card-title">General Information</h6> 
+              <p class="card-text"><b>Father : </b> {{ student.fatherName }}</p>
+              <p class="card-text"><b>Mother : </b> {{student.motherName }}</p> 
+              <p class="card-text" *ngIf = "student.category == 'International'"><b>Catergory:</b> International</p>
+              <p class="card-text" *ngIf = "student.category == 'Domestic'"><b>Catergory: </b>Domestic</p>
+              <p class="card-text"><b>Previous Score : </b>{{student.previousScore }}%</p> 
+              <p class="card-text"><b>Birthday :</b> {{student.dateOfBirth | date }}</p> 
           </div>
           <div class="right">
-              <h6 class="card-title">Submitted Documents : </h6> 
-              <p *ngIf = "student.declaration == true"> &#9658; Signed declaration</p>
-              <p *ngIf = "student.domicile == true"> &#9658; Domicile Certificate</p>
-              <p *ngIf = "student.markSheets == true"> &#9658; Previous Class's Marksheets</p>
-              <p *ngIf = "student.passport == true"> &#9658; Passport</p>
-              <p *ngIf = "student.policeClearance == true"> &#9658; Police Clearance</p>
-              <p *ngIf = "student.birthCertificate == true"> &#9658; Birth Certificate</p>
+              <h6 class="card-title">Submitted Documents </h6> 
+              <p *ngIf = "student.declaration == true"> &#9681; Signed Declaration</p>
+              <p *ngIf = "student.domicile == true"> &#9681; Domicile Certificate</p>
+              <p *ngIf = "student.markSheets == true"> &#9681; Previous Marksheets</p>
+              <p *ngIf = "student.passport == true"> &#9681; Passport</p>
+              <p *ngIf = "student.policeClearance == true"> &#9681; Police Clearance</p>
+              <p *ngIf = "student.birthCertificate == true"> &#9681; Birth Certificate</p>
           </div>
         </div>
         <div class="buttons">

@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import {Student} from '../model/students';
-import { debug } from 'util';
-import { Constants } from 'src/app/shared/Constants/constants';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +11,12 @@ export class StudentOnboardingService {
   students: BehaviorSubject<Student[]> = new BehaviorSubject([]);
 
   constructor(private http: HttpClient) {
-    this.getStudentsFromJSON();
+    var studentList = JSON.parse(localStorage.getItem('students'));
+    if(studentList && studentList.length != 0) {
+      this.students.next(studentList);
+    } else {
+      this.getStudentsFromJSON();
+    }
    }// http is initialized in the constructor to get data from json
 
   
@@ -43,7 +46,8 @@ export class StudentOnboardingService {
     }
     return null;
   }
-
+// localStorage.setItem('storeObj', JSON.stringify(myObj));
+// var getObject = JSON.parse(localStorage.getItem('storeObj'));
   /**
    * 
    * @param student model of Student
@@ -80,4 +84,12 @@ export class StudentOnboardingService {
     allStudents.splice(index, 1);
     this.students.next(allStudents);
   }
+
+  /**
+   * Subscription to students list which will update data to local storage on any change.
+   */
+  userSubscription = this.students.subscribe(val => {
+    console.log(val);
+    localStorage.setItem('students', JSON.stringify(val));
+  });
 }

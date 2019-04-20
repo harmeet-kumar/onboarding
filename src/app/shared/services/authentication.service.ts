@@ -11,11 +11,18 @@ export class AuthenticationService {
     public username: BehaviorSubject<string> = new BehaviorSubject(null);
     
     constructor() {
-        localStorage.clear();
+        const user = JSON.parse(localStorage.getItem('currentUser'));
+        if(user) { 
+            this.username.next(user.username);
+        }
     }
     
     public getCurrentUser(): string {
-        return this.username.getValue();
+        const user = JSON.parse(localStorage.getItem('currentUser'));
+        if(user) {
+            return user.username;
+        }
+        return null;
     }
 
     login(username: string, password: string) { 
@@ -31,6 +38,5 @@ export class AuthenticationService {
         // remove user from local storage to log user out
         this.username.next(null);
         localStorage.removeItem('currentUser');
-        localStorage.clear();
     }
 }

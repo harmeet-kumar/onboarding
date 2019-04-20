@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from '../../services/authentication.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-page-not-found',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PageNotFoundComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router,private authService: AuthenticationService) { }
 
   ngOnInit() {
+  }
+
+  redirectToApp() {
+    const currentUser = this.authService.getCurrentUser();
+    if(currentUser) {
+      this.router.navigateByUrl('onboarding/list');
+    } else {
+      this.router.navigateByUrl('/login');
+    }
   }
 
 }
