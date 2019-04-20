@@ -183,6 +183,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _shared_guards_login_guard_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./shared/guards/login-guard.service */ "./src/app/shared/guards/login-guard.service.ts");
 /* harmony import */ var _shared_guards_onboarding_guard_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./shared/guards/onboarding-guard.service */ "./src/app/shared/guards/onboarding-guard.service.ts");
 /* harmony import */ var _shared_footer_footer_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./shared/footer/footer.component */ "./src/app/shared/footer/footer.component.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+
 
 
 
@@ -212,10 +214,12 @@ var AppModule = /** @class */ (function () {
                 _app_routing_module__WEBPACK_IMPORTED_MODULE_3__["AppRoutingModule"],
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClientModule"],
                 _angular_flex_layout__WEBPACK_IMPORTED_MODULE_6__["FlexLayoutModule"],
-                _angular_common__WEBPACK_IMPORTED_MODULE_7__["CommonModule"]
+                _angular_common__WEBPACK_IMPORTED_MODULE_7__["CommonModule"],
+                _angular_router__WEBPACK_IMPORTED_MODULE_13__["RouterModule"]
             ],
             providers: [_shared_guards_login_guard_service__WEBPACK_IMPORTED_MODULE_10__["LoginGuardService"], _shared_guards_onboarding_guard_service__WEBPACK_IMPORTED_MODULE_11__["OnboardingGuardService"]],
-            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]]
+            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]],
+            exports: []
         })
     ], AppModule);
     return AppModule;
@@ -263,7 +267,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<footer class=\"page-footer font-small blue\" style=\"background-color: black; position: absolute; width:100%;\">\n\n    <!-- Copyright -->\n    <div class=\"footer-copyright text-center py-3\" style=\"color:gray\">© 2018 Copyright:\n      <a routerLink=\"/\"> Kratos</a>\n    </div>\n    <!-- Copyright -->\n  \n</footer>"
+module.exports = "<footer class=\"page-footer font-small blue\" style=\"background-color: black; position: absolute; width:100%;\">\n\n    <!-- Copyright -->\n    <div class=\"footer-copyright text-center py-3\" style=\"color:gray\">© 2019 NAGP Project:\n      <a> Kratos</a>\n    </div>\n    <!-- Copyright -->\n  \n</footer>"
 
 /***/ }),
 
@@ -330,7 +334,7 @@ var LoginGuardService = /** @class */ (function () {
         if (user) {
             return true;
         }
-        this._router.navigate(['/login']);
+        this._router.navigate(['/notfound']);
         return false;
     };
     LoginGuardService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -485,7 +489,7 @@ module.exports = "* {\r\n    box-sizing: border-box;\r\n  }\r\n  \r\n \r\n  #not
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"notfound\">\n\t\t<div class=\"notfound\">\n\t\t\t<div class=\"notfound-bg\">\n\t\t\t\t<div></div>\n\t\t\t\t<div></div>\n\t\t\t\t<div></div>\n\t\t\t</div>\n\t\t\t<h1>oops!</h1>\n\t\t\t<h2>Error 404 : Page Not Found</h2>\n\t\t\t<a routerLink=\"\">go back</a>\n\t\t\t<div class=\"notfound-social\">\n\t\t\t\t<a routerLink=\"\"><i class=\"fa fa-facebook\"></i></a>\n\t\t\t\t<a routerLink=\"\"><i class=\"fa fa-twitter\"></i></a>\n\t\t\t\t<a routerLink=\"\"><i class=\"fa fa-pinterest\"></i></a>\n\t\t\t\t<a routerLink=\"\"><i class=\"fa fa-google-plus\"></i></a>\n\t\t\t</div>\n\t\t</div>\n\t</div>"
+module.exports = "<div id=\"notfound\">\n\t\t<div class=\"notfound\">\n\t\t\t<div class=\"notfound-bg\">\n\t\t\t\t<div></div>\n\t\t\t\t<div></div>\n\t\t\t\t<div></div>\n\t\t\t</div>\n\t\t\t<h1>oops!</h1>\n\t\t\t<h2>Error 404 : Page Not Found</h2>\n\t\t\t<a (click)= \"redirectToApp()\" href=\"javascript:void(0);\" >go back</a>\n\t\t\t<div class=\"notfound-social\">\n\t\t\t\t<a href=\"\"><i class=\"fa fa-facebook\"></i></a>\n\t\t\t\t<a href=\"\"><i class=\"fa fa-twitter\"></i></a>\n\t\t\t\t<a href=\"\"><i class=\"fa fa-pinterest\"></i></a>\n\t\t\t\t<a href=\"\"><i class=\"fa fa-google-plus\"></i></a>\n\t\t\t</div>\n\t\t</div>\n\t</div>"
 
 /***/ }),
 
@@ -501,12 +505,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PageNotFoundComponent", function() { return PageNotFoundComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _services_authentication_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../services/authentication.service */ "./src/app/shared/services/authentication.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+
+
 
 
 var PageNotFoundComponent = /** @class */ (function () {
-    function PageNotFoundComponent() {
+    function PageNotFoundComponent(router, authService) {
+        this.router = router;
+        this.authService = authService;
     }
     PageNotFoundComponent.prototype.ngOnInit = function () {
+    };
+    PageNotFoundComponent.prototype.redirectToApp = function () {
+        var currentUser = this.authService.getCurrentUser();
+        if (currentUser) {
+            this.router.navigateByUrl('onboarding/list');
+        }
+        else {
+            this.router.navigateByUrl('/login');
+        }
     };
     PageNotFoundComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -514,7 +533,7 @@ var PageNotFoundComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./page-not-found.component.html */ "./src/app/shared/page-not-found/page-not-found/page-not-found.component.html"),
             styles: [__webpack_require__(/*! ./page-not-found.component.css */ "./src/app/shared/page-not-found/page-not-found/page-not-found.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"], _services_authentication_service__WEBPACK_IMPORTED_MODULE_2__["AuthenticationService"]])
     ], PageNotFoundComponent);
     return PageNotFoundComponent;
 }());
@@ -544,10 +563,17 @@ __webpack_require__.r(__webpack_exports__);
 var AuthenticationService = /** @class */ (function () {
     function AuthenticationService() {
         this.username = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"](null);
-        localStorage.clear();
+        var user = JSON.parse(localStorage.getItem('currentUser'));
+        if (user) {
+            this.username.next(user.username);
+        }
     }
     AuthenticationService.prototype.getCurrentUser = function () {
-        return this.username.getValue();
+        var user = JSON.parse(localStorage.getItem('currentUser'));
+        if (user) {
+            return user.username;
+        }
+        return null;
     };
     AuthenticationService.prototype.login = function (username, password) {
         var user = new _login_shared_model_User__WEBPACK_IMPORTED_MODULE_2__["User"]();
@@ -561,7 +587,6 @@ var AuthenticationService = /** @class */ (function () {
         // remove user from local storage to log user out
         this.username.next(null);
         localStorage.removeItem('currentUser');
-        localStorage.clear();
     };
     AuthenticationService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({

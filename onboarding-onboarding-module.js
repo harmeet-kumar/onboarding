@@ -95,6 +95,14 @@ var OnboardingDetailsComponent = /** @class */ (function () {
                 var student = _this.onBoardingService.getStudentFromId(id);
                 _this.fillEmployeeDetails(student);
                 if (_this.router.url.includes(src_app_shared_Constants_constants__WEBPACK_IMPORTED_MODULE_7__["Constants"].EDIT)) {
+                    if (student.category == src_app_shared_Constants_constants__WEBPACK_IMPORTED_MODULE_7__["Constants"].INTERNATIONAL) {
+                        _this.isInternationStudent = true;
+                        _this.isDomesticStudent = false;
+                    }
+                    else {
+                        _this.isInternationStudent = false;
+                        _this.isDomesticStudent = true;
+                    }
                     _this.editForm = true;
                 }
                 else {
@@ -166,6 +174,8 @@ var OnboardingDetailsComponent = /** @class */ (function () {
         else {
             this.viewForm = false;
         }
+        this.isDomesticStudent = false;
+        this.isInternationStudent = false;
         this.router.navigate([src_app_shared_Constants_constants__WEBPACK_IMPORTED_MODULE_7__["Constants"].ONBOARDINGPAGE, src_app_shared_Constants_constants__WEBPACK_IMPORTED_MODULE_7__["Constants"].LIST]);
     };
     /**
@@ -221,7 +231,7 @@ module.exports = ".cardList {\r\n    display: flex;\r\n    flex-direction: row;\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container outer\" style=\"background-image: url('assets/bg-01.jpg');    background-size: 100% 100%;\">\n    <div class=\"row\" style=\"margin-top: 50px; \"> \n     <div class=\"search-filter\">\n        <div class=\"col\" style=\"top : 30%\">\n              <label style=\" font-size:larger; margin-left: 10%; margin-right: 2%\">Filter : </label>\n              <select class=\"browser-default custom-select\" style=\"width: 20%\" [(ngModel)]=\"filterText\" >\n                  <option value=\"\">All</option>  \n                  <option value=\"International\">International</option>\n                  <option value=\"Domestic\">Domestic</option>\n                </select>\n                <a style=\"margin-left:20%\">\n                  <i class=\"fas fa-search fa-2x\" ></i>\n                  <input class=\"input--style-3 input-style2\"  type=\"text\" placeholder=\"   Search\" type=\"search\" [(ngModel)]=\"searchText\">\n                </a>\n        </div>\n      </div>\n        <div class=\"col-md-3\" style=\"min-width: 45%;\" *ngFor=\"let student of onBoardingService.students.value | searchStudents: searchText | filterStudents: filterText\">\n            <app-student [student]=\"student\" (actionPerformed)=\"deleteRecord($event)\"></app-student>\n        </div>\n    </div>\n</div>"
+module.exports = "<div class=\"container outer\" style=\"background-image: url('assets/bg-01.jpg');    background-size: 100% 100%;\">\n    <div class=\"row\" style=\"margin-top: 50px; \"> \n     <div class=\"search-filter\">\n        <div class=\"col\" style=\"top : 30%\">\n              <label style=\" font-size:larger; margin-left: 10%; margin-right: 2%\">Filter : </label>\n              <select class=\"browser-default custom-select\" style=\"width: 20%\" [(ngModel)]=\"filterText\" >\n                  <option value=\"\">All</option>  \n                  <option value=\"International\">International</option>\n                  <option value=\"Domestic\">Domestic</option>\n                </select>\n                <a style=\"margin-left:20%\">\n                  <i class=\"fas fa-search fa-2x\" ></i>\n                  <input class=\"input--style-3 input-style2\"  type=\"text\" placeholder=\"   Search\" type=\"search\" [(ngModel)]=\"searchText\">\n                </a>\n        </div>\n      </div>\n        <div class=\"col-md-3\" style=\"min-width: 45%;\" *ngFor=\"let student of onBoardingService.students.value | searchStudents: searchText | filterStudents: filterText\">\n            <app-student [student]=\"student\" (actionPerformed)=\"deleteRecord($event)\"></app-student>\n        </div>\n        <div class=\"col-md-3\" style=\"min-width: 45%;left:30%\"*ngIf=\"(onBoardingService.students.value | searchStudents: searchText).length === 0\">\n          <h1>No Students Found</h1>\n      </div>\n    </div>\n</div>"
 
 /***/ }),
 
@@ -287,7 +297,7 @@ module.exports = "\r\n.left {\r\n    width: 50% !important;\r\n    margin: 0px !
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"card parent \" [ngClass]=\"{'international':student.category == 'International','domestic' : student.category == 'Domestic'}\">\n    <div class=\"card-body \" >\n      <div>\n          <h4 class=\"card-title\" style=\"margin-bottom:25px;text-align: center;\">{{ student.firstName + \" \" + student.lastName }}</h4>\n      </div>  \n      \n\n        <!-- <h6 class=\"card-subtitle\">Father's Name :{{ student.fatherName }}</h6> -->\n        <div class=\"complete-body\" >\n          <div class=\"left\">\n              <h6 class=\"card-title\">General Information : </h6> \n              <p class=\"card-text\">Father's Name : {{ student.fatherName }}</p>\n              <p class=\"card-text\">Mother's Name : {{student.motherName }}</p> \n              <p class=\"card-text\" *ngIf = \"student.category == 'International'\">Catergory: International</p>\n              <p class=\"card-text\" *ngIf = \"student.category == 'Domestic'\">Catergory: Domestic</p>\n              <p class=\"card-text\">Previous Score : {{student.previousScore }}</p> \n              <p class=\"card-text\">Birthday : {{student.dateOfBirth | date }}</p> \n          </div>\n          <div class=\"right\">\n              <h6 class=\"card-title\">Submitted Documents : </h6> \n              <p *ngIf = \"student.declaration == true\"> &#9658; Signed declaration</p>\n              <p *ngIf = \"student.domicile == true\"> &#9658; Domicile Certificate</p>\n              <p *ngIf = \"student.markSheets == true\"> &#9658; Previous Class's Marksheets</p>\n              <p *ngIf = \"student.passport == true\"> &#9658; Passport</p>\n              <p *ngIf = \"student.policeClearance == true\"> &#9658; Police Clearance</p>\n              <p *ngIf = \"student.birthCertificate == true\"> &#9658; Birth Certificate</p>\n          </div>\n        </div>\n        <div class=\"buttons\">\n          <button class=\"btn btn-primary action-buttons\" (click) = \"editClick(student.id)\">Edit</button> \n          <button class=\"btn btn-primary action-buttons\" (click) = \"viewClicked(student.id)\">View</button>\n          <button class=\"btn btn-primary action-buttons\" (click) = \"modal.show()\" >Delete</button>\n        </div>\n    </div>\n</div>\n<app-modal #modal style=\"position:absolute\">\n    <div class=\"app-modal-header\" style=\"text-align:center; width: 100%\">\n      <h4>Delete Confirmation </h4>\n    </div>\n    <div class=\"app-modal-body\" style=\"text-align: centre\">\n      <p>Are you sure you want to delete the record for: <b class=\"font-design\">{{student.firstName + \" \" + student.lastName}}</b> </p>\n    </div>\n    <div class=\"app-modal-footer\" style=\"width: 100%\">\n      <button type=\"button\" class=\"btn btn-default left-margin\" (click)=\"modal.hide()\">Close</button>\n      <button type=\"button\" class=\"btn btn-primary left-margin\" (click)=\"deleteClicked(student.id, modal);modal.hide()\">Delete</button>\n    </div>\n</app-modal>"
+module.exports = "<div class=\"card parent \" [ngClass]=\"{'international':student.category == 'International','domestic' : student.category == 'Domestic'}\">\n    <div class=\"card-body \" >\n      <div>\n          <h4 class=\"card-title\" style=\"margin-bottom:25px;text-align: center;\">{{ student.firstName + \" \" + student.lastName }}</h4>\n      </div>  \n      \n\n        <!-- <h6 class=\"card-subtitle\">Father's Name :{{ student.fatherName }}</h6> -->\n        <div class=\"complete-body\" >\n          <div class=\"left\">\n              <h6 class=\"card-title\">General Information</h6> \n              <p class=\"card-text\"><b>Father : </b> {{ student.fatherName }}</p>\n              <p class=\"card-text\"><b>Mother : </b> {{student.motherName }}</p> \n              <p class=\"card-text\" *ngIf = \"student.category == 'International'\"><b>Catergory:</b> International</p>\n              <p class=\"card-text\" *ngIf = \"student.category == 'Domestic'\"><b>Catergory: </b>Domestic</p>\n              <p class=\"card-text\"><b>Previous Score : </b>{{student.previousScore }}%</p> \n              <p class=\"card-text\"><b>Birthday :</b> {{student.dateOfBirth | date }}</p> \n          </div>\n          <div class=\"right\">\n              <h6 class=\"card-title\">Submitted Documents </h6> \n              <p *ngIf = \"student.declaration == true\"> &#9681; Signed Declaration</p>\n              <p *ngIf = \"student.domicile == true\"> &#9681; Domicile Certificate</p>\n              <p *ngIf = \"student.markSheets == true\"> &#9681; Previous Marksheets</p>\n              <p *ngIf = \"student.passport == true\"> &#9681; Passport</p>\n              <p *ngIf = \"student.policeClearance == true\"> &#9681; Police Clearance</p>\n              <p *ngIf = \"student.birthCertificate == true\"> &#9681; Birth Certificate</p>\n          </div>\n        </div>\n        <div class=\"buttons\">\n          <button class=\"btn btn-primary action-buttons\" (click) = \"editClick(student.id)\">Edit</button> \n          <button class=\"btn btn-primary action-buttons\" (click) = \"viewClicked(student.id)\">View</button>\n          <button class=\"btn btn-primary action-buttons\" (click) = \"modal.show()\" >Delete</button>\n        </div>\n    </div>\n</div>\n<app-modal #modal style=\"position:absolute\">\n    <div class=\"app-modal-header\" style=\"text-align:center; width: 100%\">\n      <h4>Delete Confirmation </h4>\n    </div>\n    <div class=\"app-modal-body\" style=\"text-align: centre\">\n      <p>Are you sure you want to delete the record for: <b class=\"font-design\">{{student.firstName + \" \" + student.lastName}}</b> </p>\n    </div>\n    <div class=\"app-modal-footer\" style=\"width: 100%\">\n      <button type=\"button\" class=\"btn btn-default left-margin\" (click)=\"modal.hide()\">Close</button>\n      <button type=\"button\" class=\"btn btn-primary left-margin\" (click)=\"deleteClicked(student.id, modal);modal.hide()\">Delete</button>\n    </div>\n</app-modal>"
 
 /***/ }),
 
@@ -763,7 +773,20 @@ var StudentOnboardingService = /** @class */ (function () {
     function StudentOnboardingService(http) {
         this.http = http;
         this.students = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"]([]);
-        this.getStudentsFromJSON();
+        /**
+         * Subscription to students list which will update data to local storage on any change.
+         */
+        this.userSubscription = this.students.subscribe(function (val) {
+            console.log(val);
+            localStorage.setItem('students', JSON.stringify(val));
+        });
+        var studentList = JSON.parse(localStorage.getItem('students'));
+        if (studentList && studentList.length != 0) {
+            this.students.next(studentList);
+        }
+        else {
+            this.getStudentsFromJSON();
+        }
     } // http is initialized in the constructor to get data from json
     /**
      * function to get all the students saved in the pre-defined json
@@ -792,6 +815,8 @@ var StudentOnboardingService = /** @class */ (function () {
         }
         return null;
     };
+    // localStorage.setItem('storeObj', JSON.stringify(myObj));
+    // var getObject = JSON.parse(localStorage.getItem('storeObj'));
     /**
      *
      * @param student model of Student

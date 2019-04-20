@@ -166,7 +166,8 @@ var LoginModule = /** @class */ (function () {
                 _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
                 _login_routing_module__WEBPACK_IMPORTED_MODULE_3__["LoginRoutingModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_5__["ReactiveFormsModule"]
-            ]
+            ],
+            exports: [_angular_forms__WEBPACK_IMPORTED_MODULE_5__["ReactiveFormsModule"]]
         })
     ], LoginModule);
     return LoginModule;
