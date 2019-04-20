@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { PageNotFoundComponent } from './shared/page-not-found/page-not-found/page-not-found.component';
+import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
 import { LoginGuardService } from './shared/guards/login-guard.service';
 import { OnboardingGuardService } from './shared/guards/onboarding-guard.service';
 
