@@ -462,6 +462,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _shared_pipes_filter_students_pipe__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./shared/pipes/filter-students.pipe */ "./src/app/onboarding/shared/pipes/filter-students.pipe.ts");
 /* harmony import */ var _shared_guards_students_guard_service__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./shared/guards/students-guard.service */ "./src/app/onboarding/shared/guards/students-guard.service.ts");
 /* harmony import */ var _shared_guards_createStudent_guard_service__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./shared/guards/createStudent-guard.service */ "./src/app/onboarding/shared/guards/createStudent-guard.service.ts");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+
 
 
 
@@ -487,7 +489,8 @@ var OnboardingModule = /** @class */ (function () {
                 _onboarding_routing_module__WEBPACK_IMPORTED_MODULE_3__["OnboardingRoutingModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_6__["ReactiveFormsModule"],
                 _angular_flex_layout__WEBPACK_IMPORTED_MODULE_7__["FlexLayoutModule"],
-                _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormsModule"]
+                _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormsModule"],
+                _angular_common_http__WEBPACK_IMPORTED_MODULE_14__["HttpClientModule"]
             ],
             providers: [_shared_guards_students_guard_service__WEBPACK_IMPORTED_MODULE_12__["StudentGuardService"], _shared_guards_createStudent_guard_service__WEBPACK_IMPORTED_MODULE_13__["CreateGuardService"]]
         })
@@ -815,8 +818,6 @@ var StudentOnboardingService = /** @class */ (function () {
         }
         return null;
     };
-    // localStorage.setItem('storeObj', JSON.stringify(myObj));
-    // var getObject = JSON.parse(localStorage.getItem('storeObj'));
     /**
      *
      * @param student model of Student

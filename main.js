@@ -218,8 +218,7 @@ var AppModule = /** @class */ (function () {
                 _angular_router__WEBPACK_IMPORTED_MODULE_13__["RouterModule"]
             ],
             providers: [_shared_guards_login_guard_service__WEBPACK_IMPORTED_MODULE_10__["LoginGuardService"], _shared_guards_onboarding_guard_service__WEBPACK_IMPORTED_MODULE_11__["OnboardingGuardService"]],
-            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]],
-            exports: []
+            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]]
         })
     ], AppModule);
     return AppModule;
@@ -328,7 +327,7 @@ var LoginGuardService = /** @class */ (function () {
         this.authicationService = authicationService;
         this._router = _router;
     }
-    LoginGuardService.prototype.canActivate = function (route, state) {
+    LoginGuardService.prototype.canActivate = function () {
         var user = this.authicationService.getCurrentUser();
         if (user) {
             return true;
@@ -361,18 +360,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OnboardingGuardService", function() { return OnboardingGuardService; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _services_authentication_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/authentication.service */ "./src/app/shared/services/authentication.service.ts");
-
+/* harmony import */ var _services_authentication_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/authentication.service */ "./src/app/shared/services/authentication.service.ts");
 
 
 
 var OnboardingGuardService = /** @class */ (function () {
-    function OnboardingGuardService(authicationService, _router) {
+    function OnboardingGuardService(authicationService) {
         this.authicationService = authicationService;
-        this._router = _router;
     }
-    OnboardingGuardService.prototype.canActivate = function (route, state) {
+    OnboardingGuardService.prototype.canActivate = function () {
         var user = this.authicationService.getCurrentUser();
         if (user) {
             return false;
@@ -383,7 +379,7 @@ var OnboardingGuardService = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
             providedIn: 'root'
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_authentication_service__WEBPACK_IMPORTED_MODULE_3__["AuthenticationService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_authentication_service__WEBPACK_IMPORTED_MODULE_2__["AuthenticationService"]])
     ], OnboardingGuardService);
     return OnboardingGuardService;
 }());
