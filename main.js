@@ -76,7 +76,7 @@ var routes = [
     },
     {
         path: '',
-        redirectTo: 'login',
+        redirectTo: 'onboarding',
         pathMatch: 'full'
     }, {
         path: 'notfound',
@@ -360,17 +360,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OnboardingGuardService", function() { return OnboardingGuardService; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _services_authentication_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/authentication.service */ "./src/app/shared/services/authentication.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _services_authentication_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/authentication.service */ "./src/app/shared/services/authentication.service.ts");
+
 
 
 
 var OnboardingGuardService = /** @class */ (function () {
-    function OnboardingGuardService(authicationService) {
+    function OnboardingGuardService(authicationService, _router) {
         this.authicationService = authicationService;
+        this._router = _router;
     }
     OnboardingGuardService.prototype.canActivate = function () {
         var user = this.authicationService.getCurrentUser();
         if (user) {
+            this._router.navigate(['/onboarding']);
             return false;
         }
         return true;
@@ -379,7 +383,7 @@ var OnboardingGuardService = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
             providedIn: 'root'
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_authentication_service__WEBPACK_IMPORTED_MODULE_2__["AuthenticationService"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_authentication_service__WEBPACK_IMPORTED_MODULE_3__["AuthenticationService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
     ], OnboardingGuardService);
     return OnboardingGuardService;
 }());
@@ -483,7 +487,7 @@ module.exports = "* {\r\n    box-sizing: border-box;\r\n  }\r\n  \r\n \r\n  #not
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"notfound\">\n\t\t<div class=\"notfound\">\n\t\t\t<div class=\"notfound-bg\">\n\t\t\t\t<div></div>\n\t\t\t\t<div></div>\n\t\t\t\t<div></div>\n\t\t\t</div>\n\t\t\t<h1>oops!</h1>\n\t\t\t<h2>Error 404 : Page Not Found</h2>\n\t\t\t<a (click)= \"redirectToApp()\" href=\"javascript:void(0);\" >go back</a>\n\t\t\t<div class=\"notfound-social\">\n\t\t\t\t<a href=\"\"><i class=\"fa fa-facebook\"></i></a>\n\t\t\t\t<a href=\"\"><i class=\"fa fa-twitter\"></i></a>\n\t\t\t\t<a href=\"\"><i class=\"fa fa-pinterest\"></i></a>\n\t\t\t\t<a href=\"\"><i class=\"fa fa-google-plus\"></i></a>\n\t\t\t</div>\n\t\t</div>\n\t</div>"
+module.exports = "<div id=\"notfound\">\n\t\t<div class=\"notfound\">\n\t\t\t<div class=\"notfound-bg\">\n\t\t\t\t<div></div>\n\t\t\t\t<div></div>\n\t\t\t\t<div></div>\n\t\t\t</div>\n\t\t\t<h1>oops!</h1>\n\t\t\t<h2>Error 404 : Page Not Found</h2>\n\t\t\t<a (click)= \"redirectToApp()\" href=\"javascript:void(0);\" >go back</a>\n\t\t\t<div class=\"notfound-social\">\n\t\t\t\t<a (click)= \"redirectToApp()\" href=\"javascript:void(0);\"><i class=\"fa fa-facebook\"></i></a>\n\t\t\t\t<a (click)= \"redirectToApp()\" href=\"javascript:void(0);\"><i class=\"fa fa-twitter\"></i></a>\n\t\t\t\t<a (click)= \"redirectToApp()\" href=\"javascript:void(0);\"><i class=\"fa fa-pinterest\"></i></a>\n\t\t\t\t<a (click)= \"redirectToApp()\" href=\"javascript:void(0);\"><i class=\"fa fa-google-plus\"></i></a>\n\t\t\t</div>\n\t\t</div>\n\t</div>"
 
 /***/ }),
 
