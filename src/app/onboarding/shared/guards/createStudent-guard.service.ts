@@ -12,14 +12,8 @@ export class CreateGuardService  implements CanDeactivate<OnboardingDetailsCompo
    * Confirms with user if he wants to loose the data incase he left the form half filled.
    */
   canDeactivate(component: OnboardingDetailsComponent): boolean {
-    if (component.studentForm.dirty) {
-      const url = this.router.url;
-      if(url.includes('create') && component.studentForm.invalid) {
+    if (component.studentForm.dirty && component.studentForm.invalid) {
         return confirm(Constants.GUARDMESSAGE);
-      }
-      if(url.includes('edit')) {
-        return confirm(Constants.GUARDMESSAGE);
-      }
     }
     return true;
   }
