@@ -231,7 +231,7 @@ module.exports = ".cardList {\r\n    display: flex;\r\n    flex-direction: row;\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container outer outer-background\" >\n    <div class=\"row inner-first\" > \n     <div class=\"search-filter\">\n        <div class=\"col top-30\" >\n              <label class=\"filter-label\">Filter : </label>\n              <select class=\"browser-default custom-select wid-20\" [(ngModel)]=\"filterText\" >\n                  <option value=\"\">All</option>  \n                  <option value=\"International\">International</option>\n                  <option value=\"Domestic\">Domestic</option>\n                </select>\n                <a class=\"marg-left-20\">\n                  <i class=\"fas fa-search fa-2x\" ></i>\n                  <input class=\"input--style-3 input-style2\"  type=\"text\" placeholder=\"   Search\" type=\"search\" [(ngModel)]=\"searchText\">\n                </a>\n        </div>\n      </div>\n        <div class=\"col-md-3 min-width-45\" *ngFor=\"let student of onBoardingService.students.value | searchStudents: searchText | filterStudents: filterText\">\n            <app-student [student]=\"student\" (actionPerformed)=\"deleteRecord($event)\"></app-student>\n        </div>\n        <div class=\"col-md-3 min-width-45 left-30\" *ngIf=\"(onBoardingService.students.value | searchStudents: searchText).length === 0\">\n          <h1>No Students Found</h1>\n      </div>\n    </div>\n</div>"
+module.exports = "<div class=\"container outer outer-background\" >\n    <div class=\"row inner-first\" > \n     <div class=\"search-filter\">\n        <div class=\"col top-30\" >\n              <label class=\"filter-label\">Filter : </label>\n              <select class=\"browser-default custom-select wid-20\" [(ngModel)]=\"filterText\" >\n                  <option value=\"\">All</option>  \n                  <option value=\"International\">International</option>\n                  <option value=\"Domestic\">Domestic</option>\n                </select>\n                <a class=\"marg-left-20\">\n                  <i class=\"fas fa-search fa-2x\" ></i>\n                  <input class=\"input--style-3 input-style2\"  type=\"text\" placeholder=\"Search\" [(ngModel)]=\"searchText\">\n                </a>\n        </div>\n      </div>\n        <div class=\"col-md-3 min-width-45\" *ngFor=\"let student of onBoardingService.students.value | searchStudents: searchText | filterStudents: filterText\">\n            <app-student [student]=\"student\" (actionPerformed)=\"deleteRecord($event)\"></app-student>\n        </div>\n        <div class=\"col-md-3 min-width-45 left-30\" *ngIf=\"(onBoardingService.students.value | searchStudents: searchText).length === 0\">\n          <h1>No Students Found</h1>\n      </div>\n    </div>\n</div>"
 
 /***/ }),
 
@@ -531,14 +531,8 @@ var CreateGuardService = /** @class */ (function () {
      * Confirms with user if he wants to loose the data incase he left the form half filled.
      */
     CreateGuardService.prototype.canDeactivate = function (component) {
-        if (component.studentForm.dirty) {
-            var url = this.router.url;
-            if (url.includes('create') && component.studentForm.invalid) {
-                return confirm(src_app_shared_Constants_constants__WEBPACK_IMPORTED_MODULE_3__["Constants"].GUARDMESSAGE);
-            }
-            if (url.includes('edit')) {
-                return confirm(src_app_shared_Constants_constants__WEBPACK_IMPORTED_MODULE_3__["Constants"].GUARDMESSAGE);
-            }
+        if (component.studentForm.dirty && component.studentForm.invalid) {
+            return confirm(src_app_shared_Constants_constants__WEBPACK_IMPORTED_MODULE_3__["Constants"].GUARDMESSAGE);
         }
         return true;
     };
