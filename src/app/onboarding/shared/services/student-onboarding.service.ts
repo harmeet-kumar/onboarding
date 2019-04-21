@@ -88,7 +88,6 @@ export class StudentOnboardingService {
    * Subscription to students list which will update data to local storage on any change.
    */
   userSubscription = this.students.subscribe(val => {
-    console.log(val);
     localStorage.setItem('students', JSON.stringify(val));
   });
 }

@@ -370,6 +370,11 @@
   }
   
   .invalid-feedback {
-      position: relative;
+      position: absolute;
       height: 20px;
+      min-height: 20px;
+  }
+
+  .marg-bottom-20px {
+    margin-bottom: 20px;
   }

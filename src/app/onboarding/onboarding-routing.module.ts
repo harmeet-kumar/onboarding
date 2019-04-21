@@ -21,7 +21,8 @@ const routes: Routes = [
 },{
   path: 'edit/:id',
   component: OnboardingDetailsComponent,
-  canActivate: [StudentGuardService]
+  canActivate: [StudentGuardService],
+  canDeactivate: [CreateGuardService]
 },{
   path: 'list',
   component: OnboardingListComponent

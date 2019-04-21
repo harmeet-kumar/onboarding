@@ -1,7 +1,6 @@
 import {
   CanActivate, Router,
-  ActivatedRouteSnapshot,
-  RouterStateSnapshot
+  ActivatedRouteSnapshot
 } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { StudentOnboardingService } from 'src/app/onboarding/shared/services/student-onboarding.service';
@@ -21,7 +20,7 @@ export class StudentGuardService  implements CanActivate {
    * @returns boolean
    * Guard to check if the requested record exists or not. This prevents the manual hit to a student ID.
    */
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+  canActivate(route: ActivatedRouteSnapshot): boolean {
     
     const studentExists = !!this._studentsService.getStudentFromId(+route.paramMap.get(Constants.ID));
 

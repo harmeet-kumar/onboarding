@@ -30,10 +30,10 @@ export class LoginDetailsComponent implements OnInit {
 
   reset() {
     if(this.loginForm.controls.username.value != '') {
-      this.loginForm.controls.username.setValue('');
+      this.loginForm.controls.username.reset();
     }
     if(this.loginForm.controls.password.value != '') {
-      this.loginForm.controls.password.setValue('');
+      this.loginForm.controls.password.reset();
     }
   }
 
@@ -45,7 +45,7 @@ export class LoginDetailsComponent implements OnInit {
         return;
     }
  
-    const user = this.authenticationService.login(this.formControls.username.value, this.formControls.password.value);
+    this.authenticationService.login(this.formControls.username.value, this.formControls.password.value);
     
     this.router.navigate(['onboarding/create']);        
                 
