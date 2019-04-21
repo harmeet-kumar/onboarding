@@ -29,7 +29,6 @@ import { RouterModule } from '@angular/router';
     RouterModule
   ],
   providers: [LoginGuardService,OnboardingGuardService],
-  bootstrap: [AppComponent],
-  exports: []
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

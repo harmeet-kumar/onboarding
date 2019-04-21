@@ -1,9 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  CanActivate, Router,
-  ActivatedRouteSnapshot,
-  RouterStateSnapshot
-} from '@angular/router';
+import {  CanActivate } from '@angular/router';
 import { AuthenticationService } from '../services/authentication.service';
 
 @Injectable({
@@ -11,11 +7,9 @@ import { AuthenticationService } from '../services/authentication.service';
 })
 export class OnboardingGuardService implements CanActivate {
 
-  constructor(private authicationService: AuthenticationService,private _router: Router) { }
+  constructor(private authicationService: AuthenticationService) { }
 
-
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-
+  canActivate(): boolean {
     const user = this.authicationService.getCurrentUser();
     if(user) {
       return false;

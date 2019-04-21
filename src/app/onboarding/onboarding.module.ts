@@ -11,6 +11,7 @@ import { SearchStudentsPipe } from './shared/pipes/search-students.pipe';
 import { FilterStudentsPipe } from './shared/pipes/filter-students.pipe';
 import { StudentGuardService } from './shared/guards/students-guard.service';
 import { CreateGuardService } from './shared/guards/createStudent-guard.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [OnboardingDetailsComponent, OnboardingListComponent, StudentComponent,ModalComponent, SearchStudentsPipe, FilterStudentsPipe],
@@ -19,7 +20,8 @@ import { CreateGuardService } from './shared/guards/createStudent-guard.service'
     OnboardingRoutingModule,
     ReactiveFormsModule,
     FlexLayoutModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [StudentGuardService,CreateGuardService]
 })

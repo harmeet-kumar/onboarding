@@ -46,8 +46,7 @@ export class StudentOnboardingService {
     }
     return null;
   }
-// localStorage.setItem('storeObj', JSON.stringify(myObj));
-// var getObject = JSON.parse(localStorage.getItem('storeObj'));
+
   /**
    * 
    * @param student model of Student

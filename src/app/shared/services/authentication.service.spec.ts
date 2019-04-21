@@ -9,4 +9,9 @@ describe('AuthenticationService', () => {
     const service: AuthenticationService = TestBed.get(AuthenticationService);
     expect(service).toBeTruthy();
   });
+
+  it('should return empty user name', () => {
+    const service: AuthenticationService = TestBed.get(AuthenticationService);
+    expect(service.getCurrentUser()).toBe(null);
+  });
 });
